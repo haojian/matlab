@@ -1,7 +1,7 @@
 %{
     produce msequence sound
 %}
-msequence = rot90(mseq(2,10,2));
+msequence = rot90(mseq(2,8,2));
 % sound(msequence, 44100);
 % wavwrite(msequence, 44100, 16, 'msequence.wav'); 
 
