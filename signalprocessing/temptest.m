@@ -25,15 +25,14 @@ title('Single-Sided Amplitude Spectrum of y(t)')
 xlabel('Frequency (Hz)')
 ylabel('|Y(f)|')
 disp('Start speaking.')
-sound(filt, 44100);
+sound(filt, Fs);
 
 
 f_start = 17000;
 f_step  = 1000;
 
-Fs = 44100;
 dt = 1/Fs;          %chirp sample rate
-tmax = 1080/44100;
+tmax = 2080/Fs;
 t= 0:dt:tmax;                       % 0.1 second @ 44100Hz sample rate
 f0 = f_start;
 f1= f_start+f_step;
