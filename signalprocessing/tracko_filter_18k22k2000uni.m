@@ -9,9 +9,20 @@ mf_right = flipud(downchirp(:));
 %for dev1
 leftchirpandright = csvread('dev1_matlabfile.txt');
 
-% [b,a] = butter(20,0.7,'high');
+% Wp = [18000 22000]/24000;
+% Ws = [15000 23000]/24000;
+% Rp = 3;
+% Rs = 15;
+% [n,Wn] = buttord(Wp,Ws,Rp,Rs);
+% [b,a] = butter(n, Wn);
+
+% [b,a] = butter(20,0.5,'high');
 % filt=filter(b,a,leftchirpandright);
 % leftchirpandright = filt;
+
+[b,a] = butter(20,0.7,'high');
+filt=filter(b,a,leftchirpandright);
+leftchirpandright = filt;
 
 left = abs(hilbert( filter(mf_left, 1, leftchirpandright ) )) ;
 % figure()
@@ -36,7 +47,8 @@ fclose(myfile);
 %for dev2
 leftchirpandright = csvread('dev2_matlabfile.txt');
 
-% [b,a] = butter(20,0.7,'high');
+% [b,a] = butter(9,0.5,'high');
+% [b,a] = butter(n, Wn);
 % filt=filter(b,a,leftchirpandright);
 % leftchirpandright = filt;
 
